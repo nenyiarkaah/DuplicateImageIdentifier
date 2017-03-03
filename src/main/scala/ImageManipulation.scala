@@ -62,6 +62,7 @@ class ImageManipulation {
           image.hashCode(), encryptPixels(img.pixels))
     }
 
+
   }
 
   def analyseImage(path: String): ImageInfo = {
@@ -154,7 +155,7 @@ class ImageManipulation {
     val sizes = Array("B", "KB", "MB", "GB", "TB")
     var order = 0
     var length = bytes
-    while (bytes >= 1024 && order < sizes.length - 1) {
+    while (length >= 1024 && order < sizes.length - 1) {
       order += 1
       length = length / 1024
     }
