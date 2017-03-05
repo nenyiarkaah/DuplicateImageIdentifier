@@ -70,10 +70,17 @@ trait ProcessCollection extends ImageManipulation {
   }
 
   def processImagePair(pathA: String, pathB: String): Unit = {
-    val testcase1 = analyseImage(pathA)
-    val testcase2 = analyseImage(pathB)
-    println(compareImages(testcase1, testcase2))
-    println(compareImagesValue(testcase1, testcase2))
+    analyseImage(pathA) match {
+      case None => println("unable to retrieve " + pathA)
+      case Some(a) =>
+        analyseImage(pathB) match {
+          case None => println("unable to retrieve " + pathA)
+          case Some(b) =>
+            println(compareImages(a, b))
+            println(compareImagesValue(a, b))
+        }
+    }
+
   }
 
 }
